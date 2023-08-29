@@ -1,14 +1,14 @@
 package com.arkangel.ulessontechnicaltest.android.utils
 
-import androidx.activity.ComponentActivity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.pm.ActivityInfo
+import androidx.activity.ComponentActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 
-fun Context.findActivity() : ComponentActivity? = when (this) {
+fun Context.findActivity(): ComponentActivity? = when (this) {
     is ComponentActivity -> this
     is ContextWrapper -> baseContext.findActivity()
     else -> null

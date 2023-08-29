@@ -70,10 +70,13 @@ class LessonPlayerScreenViewModel(
         val savedProgress = resumeLearningUseCase.getSavedProgress()
         val mediaSources = navArgs.lessons.lessons.mapIndexed { index, lesson ->
             val uri = Uri.parse(lesson.videoUrl)
-            if ((index == navArgs.index
-                        || index == navArgs.index + 1
-                        || index == navArgs.index - 1)
-                && isOnWiFi()) {
+            if ((
+                index == navArgs.index ||
+                    index == navArgs.index + 1 ||
+                    index == navArgs.index - 1
+                ) &&
+                isOnWiFi()
+            ) {
                 downloadManager.queueDownload(DownloadRequest.Builder(uri.toString(), uri).build())
             }
 
@@ -111,10 +114,13 @@ class LessonPlayerScreenViewModel(
 
                         navArgs.lessons.lessons.forEachIndexed { index, lesson ->
                             val uri = Uri.parse(lesson.videoUrl)
-                            if ((index == navArgs.index
-                                || index == navArgs.index + 1
-                                || index == navArgs.index - 1)
-                                && isOnWiFi()) {
+                            if ((
+                                index == navArgs.index ||
+                                    index == navArgs.index + 1 ||
+                                    index == navArgs.index - 1
+                                ) &&
+                                isOnWiFi()
+                            ) {
                                 downloadManager.queueDownload(DownloadRequest.Builder(uri.toString(), uri).build())
                             }
                         }
@@ -124,8 +130,6 @@ class LessonPlayerScreenViewModel(
 
             override fun onPlaybackStateChanged(playbackState: Int) {
                 super.onPlaybackStateChanged(playbackState)
-
-
             }
         })
     }

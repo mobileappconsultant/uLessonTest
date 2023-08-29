@@ -34,8 +34,8 @@ import com.arkangel.ulessontechnicaltest.android.DEFAULT_MARGIN
 import com.arkangel.ulessontechnicaltest.android.DEFAULT_PADDING
 import com.arkangel.ulessontechnicaltest.android.R
 import com.arkangel.ulessontechnicaltest.android.features.destinations.LessonPlayerScreenDestination
-import com.arkangel.ulessontechnicaltest.android.features.subjects.models.Subject
 import com.arkangel.ulessontechnicaltest.android.features.home.components.SearchBox
+import com.arkangel.ulessontechnicaltest.android.features.subjects.models.Subject
 import com.arkangel.ulessontechnicaltest.android.features.subjects.ui.subject_info.components.Chapters
 import com.arkangel.ulessontechnicaltest.android.features.subjects.ui.subject_info.components.ResumeLearning
 import com.arkangel.ulessontechnicaltest.android.features.subjects.ui.subject_info.components.TopBar
@@ -70,7 +70,7 @@ fun SubjectInfoScreen(navigator: DestinationsNavigator) {
         modifier = Modifier
             .fillMaxSize(),
         backgroundColor = MaterialTheme.colors.surface,
-        topBar = {TopBar(navigator)}
+        topBar = { TopBar(navigator) }
     ) { padding ->
         Box(
             modifier = Modifier.fillMaxSize()

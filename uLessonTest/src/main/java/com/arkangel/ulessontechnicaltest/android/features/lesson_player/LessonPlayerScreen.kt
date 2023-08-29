@@ -270,8 +270,9 @@ private fun MediaContent(
     modifier: Modifier = Modifier
 ) {
     val activity = LocalContext.current.findActivity()!!
-    val enterFullscreen = { activity.requestedOrientation =
-        ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
+    val enterFullscreen = {
+        activity.requestedOrientation =
+            ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
     }
     val exitFullscreen = {
         @SuppressLint("SourceLockedOrientationActivity")

@@ -59,9 +59,11 @@ fun DailyLoginDialog(
                 textAlign = TextAlign.Center
             )
 
-            Button(onClick = {
-                onDismissRequest()
-            }) {
+            Button(
+                onClick = {
+                    onDismissRequest()
+                }
+            ) {
                 Text("Okay")
             }
         }

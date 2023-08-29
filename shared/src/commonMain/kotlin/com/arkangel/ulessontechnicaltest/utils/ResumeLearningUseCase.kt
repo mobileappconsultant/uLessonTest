@@ -22,10 +22,12 @@ class ResumeLearningUseCase {
     private val settings: Settings = sharedDI.koin.get()
 
     fun saveLessonProgress(lesson: Lesson, timestamp: Long) {
-        val jsonString = Json.encodeToString(LearningProgress(
-            lesson = lesson,
-            timestamp = timestamp
-        ))
+        val jsonString = Json.encodeToString(
+            LearningProgress(
+                lesson = lesson,
+                timestamp = timestamp
+            )
+        )
 
         settings[LESSON_PROGRESS_PREF] = jsonString
     }

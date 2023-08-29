@@ -4,10 +4,10 @@ import android.app.Application
 import android.content.Context
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import com.arkangel.ulessontechnicaltest.android.features.subjects.usecase.GetSubjectsUseCase
 import com.arkangel.ulessontechnicaltest.android.features.home.HomeScreenViewModel
 import com.arkangel.ulessontechnicaltest.android.features.lesson_player.LessonPlayerScreenViewModel
 import com.arkangel.ulessontechnicaltest.android.features.subjects.ui.subject_info.SubjectInfoScreenViewModel
+import com.arkangel.ulessontechnicaltest.android.features.subjects.usecase.GetSubjectsUseCase
 import com.arkangel.ulessontechnicaltest.android.utils.DownloadManager
 import com.arkangel.ulessontechnicaltest.android.utils.DownloadManagerImpl
 import com.arkangel.ulessontechnicaltest.android.utils.PlayerUtil
