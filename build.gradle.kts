@@ -6,6 +6,8 @@ plugins {
     kotlin("multiplatform").version("1.8.21").apply(false)
 }
 
+apply("config/githooks.gradle")
+
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
