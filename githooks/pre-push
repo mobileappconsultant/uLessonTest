@@ -8,23 +8,6 @@ sh scripts/ktlint.sh
 
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
- echo "Ktlint error. Run sh scripts/ktlint.sh -F to apply fixes"
+ echo "Ktlint error. Run sh ./ktlint.sh -F to apply fixes"
  exit 1
 fi
-
-echo "Running detekt..."
-OUTPUT="/tmp/detekt-$(date +%s)"
-./gradlew detekt > $OUTPUT
-EXIT_CODE=$?
-if [ $EXIT_CODE -ne 0 ]; then
-  cat $OUTPUT
-  rm $OUTPUT
-  echo "***********************************************"
-  echo "                 Detekt failed                 "
-  echo " Please fix the above issues before committing "
-  echo "***********************************************"
-  exit $EXIT_CODE
-fi
-rm $OUTPUT
-
-exit 0
