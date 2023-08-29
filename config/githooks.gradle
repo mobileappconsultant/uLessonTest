@@ -5,5 +5,5 @@ task installGitHook(type: Copy) {
 }
 
 afterEvaluate {
-    tasks.getByPath(':androidApp:preBuild').dependsOn installGitHook
+    tasks.getByPath(':uLessonTest:preBuild').dependsOn installGitHook
 }

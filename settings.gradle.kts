@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ULessonTechnicalTest"
-include(":androidApp")
+include(":uLessonTest")
 include(":shared")
