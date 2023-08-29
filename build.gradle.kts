@@ -6,6 +6,17 @@ plugins {
     kotlin("multiplatform").version("1.8.21").apply(false)
 }
 
+// Top-level build file
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.kover.gradle.plugin)
+    }
+}
+
 apply("config/githooks.gradle")
 
 tasks.register("clean", Delete::class) {

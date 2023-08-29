@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("com.google.devtools.ksp") version "1.8.21-1.0.11"
     kotlin("plugin.serialization") version "1.8.21"
+    id("org.jetbrains.kotlinx.kover")
 }
 
 android {
@@ -37,6 +38,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    defaultConfig {
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
 
@@ -78,4 +82,71 @@ dependencies {
     implementation(libs.multiplatform.settings.noarg)
     implementation(libs.koin.core)
     ksp(libs.compose.destinations.ksp)
+
+    testImplementation(libs.junit)
+}
+
+
+
+
+koverAndroid {
+    common {
+        filters {
+            includes {
+                packages(
+                    "com.arkangel.*"
+                )
+            }
+            excludes {
+                annotatedBy("*Composable*", "*Generated*", "*ExperimentalSerializationApi")
+                classes(
+                    "*_*Factory.*",
+                    "*_Factory.*",
+                    "Hilt_*",
+                    "*_Hilt*",
+                    "*__Factory",
+                    "dagger.hilt.*",
+                    "hilt_aggregated_deps.*",
+                    "*_Factory",
+                    "*_Factory\$*",
+                    "*_*Factory",
+                    "*_*Factory\$*",
+                    "*_Impl",
+                    "*_Impl\$*",
+                    "*Composable*",
+                    "*ui*",
+                    "*serializer",
+                    "*Activity",
+                    "*Activity\$*",
+                    "*.databinding.*",
+                    "*.BuildConfig",
+                    // excludes debug classes
+                    "*.DebugUtil",
+
+                    "com.arkangel.ulessontechnicaltest.ULessonTechnicalTestApplication*",
+                    "com.arkangel.ulessontechnicaltest.android.ComposableSingletons*",
+                    "com.arkangel.ulessontechnicaltest.android.MainActivity*",
+                    "com.arkangel.ulessontechnicaltest.android.MyApplicationThemeKt*",
+                    "com.arkangel.ulessontechnicaltest.android.TerminalStateNotificationHelper*",
+                    "com.arkangel.ulessontechnicaltest.android.VideoDownloadService*",
+                    "com.arkangel.ulessontechnicaltest.android.features.NavArgsGettersKt*",
+                    "com.arkangel.ulessontechnicaltest.android.features.NavGraph*",
+                    "com.arkangel.ulessontechnicaltest.android.features.NavGraphs*",
+                    "com.arkangel.ulessontechnicaltest.android.features.SingleModuleExtensionsKt*",
+                    "com.arkangel.ulessontechnicaltest.android.features.destinations.DirectionDestination*",
+                    "com.arkangel.ulessontechnicaltest.android.features.destinations.HomeScreenDestination*",
+                    "com.arkangel.ulessontechnicaltest.android.features.destinations.LessonPlayerScreenDestination*",
+                    "com.arkangel.ulessontechnicaltest.android.features.destinations.SubjectInfoScreenDestination*",
+                    "com.arkangel.ulessontechnicaltest.android.features.destinations.TypedDestination*",
+                    "com.arkangel.ulessontechnicaltest.android.features.home.ComposableSingletons*",
+                    "com.arkangel.ulessontechnicaltest.android.features.home.HomeScreenKt*",
+                    "com.arkangel.ulessontechnicaltest.android.features.lesson_player.LessonPlayerScreenKt*",
+                    "com.arkangel.ulessontechnicaltest.android.features.lesson_player.LessonPlayerScreenNavArgs*",
+                    "com.arkangel.ulessontechnicaltest.android.utils.ContextUtilsKt*",
+                    "com.arkangel.ulessontechnicaltest.android.utils.DownloadManagerImpl*",
+                    "com.arkangel.ulessontechnicaltest.android.utils.PlayerUtil*",
+                )
+            }
+        }
+    }
 }
