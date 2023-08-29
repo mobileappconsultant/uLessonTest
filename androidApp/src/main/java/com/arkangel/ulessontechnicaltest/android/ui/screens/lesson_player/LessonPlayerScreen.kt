@@ -155,32 +155,36 @@ fun LessonPlayerScreen(navigator: DestinationsNavigator) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    TextButton(onClick = {
-                        showBookmarkDialog = false
-                        if (temporarilyPaused) {
-                            viewModel.exoPlayer.play()
-                            temporarilyPaused = false
+                    TextButton(
+                        onClick = {
+                            showBookmarkDialog = false
+                            if (temporarilyPaused) {
+                                viewModel.exoPlayer.play()
+                                temporarilyPaused = false
+                            }
                         }
-                    }) {
+                    ) {
                         Text("Cancel")
                     }
 
-                    Button(onClick = {
-                        if (dialogText.trim().isEmpty()) {
-                            Toast.makeText(context,
-                                context.getString(R.string.please_enter_a_note), Toast.LENGTH_SHORT
-                            ).show()
-                            return@Button
-                        }
-                        viewModel.saveBookmark(dialogText.trim())
+                    Button(
+                        onClick = {
+                            if (dialogText.trim().isEmpty()) {
+                                Toast.makeText(
+                                    context,
+                                    context.getString(R.string.please_enter_a_note), Toast.LENGTH_SHORT
+                                ).show()
+                                return@Button
+                            }
+                            viewModel.saveBookmark(dialogText.trim())
 
-                        showBookmarkDialog = false
-                        if (temporarilyPaused) {
-                            viewModel.exoPlayer.play()
-                            temporarilyPaused = false
+                            showBookmarkDialog = false
+                            if (temporarilyPaused) {
+                                viewModel.exoPlayer.play()
+                                temporarilyPaused = false
+                            }
                         }
-
-                    }) {
+                    ) {
                         Text("Okay")
                     }
                 }

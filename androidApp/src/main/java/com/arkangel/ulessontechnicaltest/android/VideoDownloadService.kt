@@ -58,7 +58,7 @@ import java.lang.Exception
     private val context: Context,
     private val notificationHelper: DownloadNotificationHelper,
     private var nextNotificationId: Int
-): DownloadManager.Listener {
+) : DownloadManager.Listener {
     override fun onDownloadChanged(
         downloadManager: DownloadManager,
         download: Download,

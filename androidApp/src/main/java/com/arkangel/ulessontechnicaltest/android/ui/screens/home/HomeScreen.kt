@@ -69,7 +69,8 @@ fun HomeScreen(
                 subjects.toList()
             ) { subject ->
                 if (subject.title != context.getString(R.string.biology)) {
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         context.getString(R.string.only_biology_is_available_at_the_moment),
                         Toast.LENGTH_SHORT
                     ).show()

@@ -2,13 +2,8 @@ package com.arkangel.ulessontechnicaltest
 
 import android.app.Application
 import android.content.Context
-import android.net.Uri
-import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
-import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import com.arkangel.ulessontechnicaltest.android.features.subjects.usecase.GetSubjectsUseCase
 import com.arkangel.ulessontechnicaltest.android.ui.screens.home.HomeScreenViewModel
 import com.arkangel.ulessontechnicaltest.android.ui.screens.lesson_player.LessonPlayerScreenViewModel
@@ -20,50 +15,52 @@ import com.arkangel.ulessontechnicaltest.features.bookmark.usecase.AddBookmarkUs
 import com.arkangel.ulessontechnicaltest.features.bookmark.usecase.DeleteBookmarkUseCase
 import com.arkangel.ulessontechnicaltest.features.bookmark.usecase.GetBookmarksUseCase
 import com.arkangel.ulessontechnicaltest.features.chapter.usecase.GetChaptersUseCase
-import org.koin.core.context.startKoin
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-class ULessonTechnicalTestApplication: Application() {
+class ULessonTechnicalTestApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
         startKoin {
-            modules(module {
-                androidContext(this@ULessonTechnicalTestApplication)
+            modules(
+                module {
+                    androidContext(this@ULessonTechnicalTestApplication)
 
-                // Android Resources
-                factory { get<Context>().resources }
+                    // Android Resources
+                    factory { get<Context>().resources }
 
-                // Use cases
-                factory { GetSubjectsUseCase(get()) }
-                factory { GetChaptersUseCase() }
+                    // Use cases
+                    factory { GetSubjectsUseCase(get()) }
+                    factory { GetChaptersUseCase() }
 
-                // View Models
-                viewModelOf(::HomeScreenViewModel)
-                viewModelOf(::SubjectInfoScreenViewModel)
-                viewModelOf(::LessonPlayerScreenViewModel)
+                    // View Models
+                    viewModelOf(::HomeScreenViewModel)
+                    viewModelOf(::SubjectInfoScreenViewModel)
+                    viewModelOf(::LessonPlayerScreenViewModel)
 
-                // Bookmarks
-                factory { AddBookmarkUseCase() }
-                factory { GetBookmarksUseCase() }
-                factory { DeleteBookmarkUseCase() }
+                    // Bookmarks
+                    factory { AddBookmarkUseCase() }
+                    factory { GetBookmarksUseCase() }
+                    factory { DeleteBookmarkUseCase() }
 
-                // Player Util
-                single { PlayerUtil() }
+                    // Player Util
+                    single { PlayerUtil() }
 
-                // Download Manager
-                single <DownloadManager> { DownloadManagerImpl(get()) }
+                    // Download Manager
+                    single <DownloadManager> { DownloadManagerImpl(get()) }
 
-                factory {
-                    val playerUtil: PlayerUtil = get()
-                    ExoPlayer.Builder(get())
-                        .setMediaSourceFactory(
-                            DefaultMediaSourceFactory(get<Context>()).setDataSourceFactory(playerUtil.getDataSourceFactory(get()))
-                        ).build()
+                    factory {
+                        val playerUtil: PlayerUtil = get()
+                        ExoPlayer.Builder(get())
+                            .setMediaSourceFactory(
+                                DefaultMediaSourceFactory(get<Context>()).setDataSourceFactory(playerUtil.getDataSourceFactory(get()))
+                            ).build()
+                    }
                 }
-            })
+            )
         }
     }
 }

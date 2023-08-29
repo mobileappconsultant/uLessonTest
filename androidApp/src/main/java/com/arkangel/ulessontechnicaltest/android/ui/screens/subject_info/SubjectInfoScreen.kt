@@ -94,7 +94,7 @@ fun SubjectInfoScreen(navigator: DestinationsNavigator) {
 
                 SearchBox(
                     value = searchQuery,
-                    placeholder = {Text(stringResource(R.string.search_for_a_lesson_or_topic))}
+                    placeholder = { Text(stringResource(R.string.search_for_a_lesson_or_topic)) }
                 ) { searchQuery = it }
                 Spacer(modifier = Modifier.height(8.dp))
 
@@ -116,10 +116,12 @@ fun SubjectInfoScreen(navigator: DestinationsNavigator) {
                 )
                 Chapters(chapters = chapters) { lesson ->
                     val chapter = chapters.firstOrNull { it.lessons.contains(lesson) } ?: return@Chapters
-                    navigator.navigate(LessonPlayerScreenDestination(
-                        lessons = LessonsWrapper(chapter.lessons),
-                        index = chapter.lessons.indexOf(lesson)
-                    ))
+                    navigator.navigate(
+                        LessonPlayerScreenDestination(
+                            lessons = LessonsWrapper(chapter.lessons),
+                            index = chapter.lessons.indexOf(lesson)
+                        )
+                    )
                 }
             }
         }

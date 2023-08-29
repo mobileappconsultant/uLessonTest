@@ -10,7 +10,7 @@ import com.arkangel.ulessontechnicaltest.android.VideoDownloadService
 class DownloadManagerImpl(
     private val context: Context,
 
-): DownloadManager {
+) : DownloadManager {
     override fun queueDownload(downloadRequest: DownloadRequest) {
         DownloadService.sendAddDownload(
             context,

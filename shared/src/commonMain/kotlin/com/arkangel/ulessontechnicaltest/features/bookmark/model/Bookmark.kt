@@ -1,6 +1,5 @@
 package com.arkangel.ulessontechnicaltest.features.bookmark.model
 
-import com.arkangel.ulessontechnicaltest.features.chapter.model.Lesson
 import kotlinx.serialization.Serializable
 
 @Serializable

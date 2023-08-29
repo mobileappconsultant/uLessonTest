@@ -36,7 +36,7 @@ class LessonPlayerScreenViewModel(
     val exoPlayer: ExoPlayer,
     private val playerUtil: PlayerUtil,
     private val downloadManager: DownloadManager
-): ViewModel() {
+) : ViewModel() {
     private val navArgs = LessonPlayerScreenDestination.argsFrom(state)
 
     private val lessons: List<Lesson>
@@ -68,7 +68,7 @@ class LessonPlayerScreenViewModel(
             }
 
             ProgressiveMediaSource.Factory(playerUtil.getDataSourceFactory(application))
-            .createMediaSource(MediaItem.fromUri(uri))
+                .createMediaSource(MediaItem.fromUri(uri))
         }
 
         val source = ConcatenatingMediaSource(*mediaSources.toTypedArray())
@@ -78,7 +78,7 @@ class LessonPlayerScreenViewModel(
         exoPlayer.playWhenReady = true
         downloadManager.resumeAllDownloads()
 
-        exoPlayer.addListener(object: Player.Listener {
+        exoPlayer.addListener(object : Player.Listener {
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 super.onMediaItemTransition(mediaItem, reason)
 
@@ -98,7 +98,6 @@ class LessonPlayerScreenViewModel(
                         }
                     }
                 }
-
             }
         })
     }
@@ -107,10 +106,13 @@ class LessonPlayerScreenViewModel(
         val currentTime = exoPlayer.currentPosition
         val savedLesson = currentLesson.value
         viewModelScope.launch {
-            addBookmarkUseCase.addBookmark(savedLesson, Bookmark(
-                note = note,
-                timestamp = currentTime
-            ))
+            addBookmarkUseCase.addBookmark(
+                savedLesson,
+                Bookmark(
+                    note = note,
+                    timestamp = currentTime
+                )
+            )
             fetchBookmarks()
         }
     }
@@ -124,5 +126,4 @@ class LessonPlayerScreenViewModel(
 
     fun saveCurrentLesson() {
     }
-
 }

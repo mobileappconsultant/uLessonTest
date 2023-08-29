@@ -28,13 +28,15 @@ internal fun makeClient() = HttpClient {
     }
 
     install(ContentNegotiation) {
-        json(Json {
-            ignoreUnknownKeys = true
-            prettyPrint = true
-            isLenient = true
-            explicitNulls = false
-            encodeDefaults = true
-            coerceInputValues = true
-        })
+        json(
+            Json {
+                ignoreUnknownKeys = true
+                prettyPrint = true
+                isLenient = true
+                explicitNulls = false
+                encodeDefaults = true
+                coerceInputValues = true
+            }
+        )
     }
 }

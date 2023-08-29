@@ -19,7 +19,7 @@ class SubjectInfoScreenViewModel(
     state: SavedStateHandle,
     private val getChaptersUseCase: GetChaptersUseCase,
     private val application: Application
-): ViewModel() {
+) : ViewModel() {
     private val navArgs = SubjectInfoScreenDestination.argsFrom(state)
     val subject: Subject
         get() = navArgs.subject

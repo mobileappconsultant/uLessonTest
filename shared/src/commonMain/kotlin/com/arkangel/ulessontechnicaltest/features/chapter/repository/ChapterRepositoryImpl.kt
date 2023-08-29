@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 
 class ChapterRepositoryImpl(
     private val chapterApi: ChapterApi
-): ChapterRepository {
+) : ChapterRepository {
     override suspend fun getChapters(subject: String): ApiResponse<List<Chapter>> = withContext(Dispatchers.IO) {
         try {
             val chapters = chapterApi.getChapters(subject)
@@ -18,5 +18,4 @@ class ChapterRepositoryImpl(
             ApiResponse(null, error)
         }
     }
-
 }

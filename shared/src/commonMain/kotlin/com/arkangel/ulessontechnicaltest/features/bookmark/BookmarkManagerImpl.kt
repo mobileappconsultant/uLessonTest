@@ -12,7 +12,7 @@ private const val BOOKMARKS_KEY = "bookmarks"
 
 internal class BookmarkManagerImpl(
     private val settings: Settings
-): BookmarkManager {
+) : BookmarkManager {
     private val bookmarks = mutableMapOf<String, MutableList<Bookmark>>()
     init {
         val jsonString: String = settings[BOOKMARKS_KEY] ?: ""
@@ -44,5 +44,4 @@ internal class BookmarkManagerImpl(
         val response = Json.encodeToString(bookmarks)
         settings[BOOKMARKS_KEY] = response
     }
-
 }

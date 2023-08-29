@@ -16,37 +16,36 @@ fun BottomBar() {
         NavigationBarItem(
             selected = true,
             onClick = {},
-            icon = { Icon(painterResource(id = R.drawable.home), "Home Icon")},
-            label = {Text(stringResource(R.string.home), fontSize = 12.sp)}
+            icon = { Icon(painterResource(id = R.drawable.home), "Home Icon") },
+            label = { Text(stringResource(R.string.home), fontSize = 12.sp) }
         )
 
         NavigationBarItem(
             selected = false,
             onClick = {},
-            icon = { Icon(painterResource(id = R.drawable.classes), "Classes Icon")},
-            label = {Text(stringResource(R.string.classes), fontSize = 12.sp)}
+            icon = { Icon(painterResource(id = R.drawable.classes), "Classes Icon") },
+            label = { Text(stringResource(R.string.classes), fontSize = 12.sp) }
         )
 
         NavigationBarItem(
             selected = false,
             onClick = {},
-            icon = { Icon(painterResource(id = R.drawable.subscribe), "Subscribe Icon")},
-            label = {Text(stringResource(R.string.subscribe), fontSize = 12.sp)}
+            icon = { Icon(painterResource(id = R.drawable.subscribe), "Subscribe Icon") },
+            label = { Text(stringResource(R.string.subscribe), fontSize = 12.sp) }
         )
 
         NavigationBarItem(
             selected = false,
             onClick = {},
-            icon = { Icon(painterResource(id = R.drawable.downloads), "Downloads Icon")},
-            label = {Text(stringResource(R.string.downloads), fontSize = 12.sp)}
+            icon = { Icon(painterResource(id = R.drawable.downloads), "Downloads Icon") },
+            label = { Text(stringResource(R.string.downloads), fontSize = 12.sp) }
         )
 
         NavigationBarItem(
             selected = false,
             onClick = {},
-            icon = { Icon(painterResource(id = R.drawable.more), "More Icon")},
-            label = {Text(stringResource(R.string.more), fontSize = 12.sp)}
+            icon = { Icon(painterResource(id = R.drawable.more), "More Icon") },
+            label = { Text(stringResource(R.string.more), fontSize = 12.sp) }
         )
-
     }
 }

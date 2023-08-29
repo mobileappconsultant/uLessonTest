@@ -12,7 +12,7 @@ import io.ktor.http.contentType
 
 class MockChapterApi(
     private val client: HttpClient
-): ChapterApi {
+) : ChapterApi {
     override suspend fun getChapters(subject: String): List<Chapter> {
         if (subject.lowercase() != "biology") {
             return listOf()

@@ -1,7 +1,6 @@
 package com.arkangel.ulessontechnicaltest.android.ui.screens.home.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
