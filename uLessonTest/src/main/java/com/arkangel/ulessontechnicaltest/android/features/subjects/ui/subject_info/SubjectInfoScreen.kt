@@ -20,9 +20,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.arkangel.ulessontechnicaltest.UIState
@@ -44,6 +48,7 @@ data class SubjectInfoScreenNavArgs(
     val subject: Subject
 )
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Destination(
     navArgsDelegate = SubjectInfoScreenNavArgs::class
 )
@@ -88,9 +93,17 @@ fun SubjectInfoScreen(navigator: DestinationsNavigator) {
                 Text(
                     subject.title,
                     style = MaterialTheme.typography.h5,
-                    fontWeight = FontWeight.W500
+                    fontWeight = FontWeight.W500,
+                    modifier = Modifier
+                        .semantics { testTagsAsResourceId = true }
+                        .testTag("subjectTitle")
                 )
-                Text(stringResource(R.string._16_chapters_140_lessons, chapters.size, chapters.sumOf { it.lessons.size }))
+                Text(
+                    stringResource(R.string._16_chapters_140_lessons, chapters.size, chapters.sumOf { it.lessons.size }),
+                    modifier = Modifier
+                        .semantics { testTagsAsResourceId = true }
+                        .testTag("subjectChaptersInfo")
+                )
 
                 SearchBox(
                     value = searchQuery,
@@ -104,7 +117,7 @@ fun SubjectInfoScreen(navigator: DestinationsNavigator) {
                     chapter?.let { chapter ->
                         Text(
                             text = stringResource(R.string.resume_learning),
-                            style = MaterialTheme.typography.h6
+                            style = MaterialTheme.typography.h6,
                         )
 
                         ResumeLearning(

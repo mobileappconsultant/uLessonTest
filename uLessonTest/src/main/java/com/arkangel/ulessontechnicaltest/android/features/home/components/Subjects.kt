@@ -11,9 +11,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.arkangel.ulessontechnicaltest.android.features.subjects.models.Subject
 
@@ -35,18 +40,33 @@ fun Subjects(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SubjectItem(subject: Subject, onClick: () -> Unit) {
     Column(
-        modifier = Modifier.clickable { onClick() },
+        modifier = Modifier
+            .clickable { onClick() }
+            .semantics { testTagsAsResourceId = true }
+            .testTag("subject"),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
             painter = painterResource(subject.icon),
             contentDescription = "Subject Icon",
-            tint = Color.Unspecified
+            tint = Color.Unspecified,
+            modifier = Modifier
+                .semantics { testTagsAsResourceId = true }
+                .testTag("subjectIcon")
         )
-        Text(subject.title, style = MaterialTheme.typography.subtitle2)
+        Text(
+            subject.title,
+            style = MaterialTheme.typography.subtitle2,
+            modifier = Modifier
+                .semantics { testTagsAsResourceId = true }
+                .testTag("subjectTitle"),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }

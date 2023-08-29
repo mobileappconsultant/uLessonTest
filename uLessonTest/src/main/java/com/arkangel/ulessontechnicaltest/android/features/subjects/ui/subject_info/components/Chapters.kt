@@ -21,11 +21,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,6 +55,7 @@ fun Chapters(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ChapterCard(chapter: Chapter, index: Int, onSelectedLesson: (title: Lesson) -> Unit) {
 
@@ -61,7 +66,9 @@ fun ChapterCard(chapter: Chapter, index: Int, onSelectedLesson: (title: Lesson) 
             .clip(RoundedCornerShape(24.dp))
             .fillMaxWidth()
             .padding(12.dp)
-            .clickable { lessonsVisible = !lessonsVisible },
+            .clickable { lessonsVisible = !lessonsVisible }
+            .semantics { testTagsAsResourceId = true }
+            .testTag("chapterContainer"),
         backgroundColor = Color.White,
         elevation = 0.dp,
         shape = MaterialTheme.shapes.large
@@ -138,6 +145,7 @@ fun LessonList(lessons: List<Lesson>, onSelectLesson: (lesson: Lesson) -> Unit) 
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LessonTile(lesson: Lesson, onClick: () -> Unit) {
     Row(
@@ -145,7 +153,9 @@ fun LessonTile(lesson: Lesson, onClick: () -> Unit) {
             .clickable { onClick() }
             .border(1.dp, Color.Black, RoundedCornerShape(12.dp))
             .fillMaxWidth()
-            .padding(12.dp),
+            .padding(12.dp)
+            .semantics { testTagsAsResourceId = true }
+            .testTag("lesson"),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

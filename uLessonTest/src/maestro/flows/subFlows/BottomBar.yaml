@@ -1,0 +1,13 @@
+appId: com.arkangel.ulessontechnicaltest.android
+---
+
+- assertVisible:
+    id: "HomeIcon"
+- assertVisible:
+    id: "ClassesIcon"
+- assertVisible:
+    id: "SubscribeIcon"
+- assertVisible:
+    id: "DownloadsIcon"
+- assertVisible:
+    id: "MoreIcon"
