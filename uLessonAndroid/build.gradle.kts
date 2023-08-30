@@ -83,7 +83,11 @@ dependencies {
     implementation(libs.koin.core)
     ksp(libs.compose.destinations.ksp)
 
+
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.core.testing)
 }
 
 
@@ -145,6 +149,11 @@ koverAndroid {
                     "com.arkangel.ulessontechnicaltest.android.utils.ContextUtilsKt*",
                     "com.arkangel.ulessontechnicaltest.android.utils.DownloadManagerImpl*",
                     "com.arkangel.ulessontechnicaltest.android.utils.PlayerUtil*",
+                    "com.arkangel.ulessontechnicaltest.android.utils.DateUtilsWrapper*",
+                    "com.arkangel.ulessontechnicaltest.android.features.navtype.LessonsWrapperNavType*",
+                    "com.arkangel.ulessontechnicaltest.android.features.navtype.LessonsWrapperNavTypeKt*",
+                    "com.arkangel.ulessontechnicaltest.android.features.navtype.SubjectNavType*",
+                    "com.arkangel.ulessontechnicaltest.android.features.navtype.SubjectNavTypeKtz*",
                 )
             }
         }

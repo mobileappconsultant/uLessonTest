@@ -14,6 +14,7 @@ import com.arkangel.ulessontechnicaltest.android.features.home.HomeScreenViewMod
 import com.arkangel.ulessontechnicaltest.android.features.lesson_player.LessonPlayerScreenViewModel
 import com.arkangel.ulessontechnicaltest.android.features.subjects.ui.subject_info.SubjectInfoScreenViewModel
 import com.arkangel.ulessontechnicaltest.android.features.subjects.usecase.GetSubjectsUseCase
+import com.arkangel.ulessontechnicaltest.android.utils.DateUtilsWrapper
 import com.arkangel.ulessontechnicaltest.android.utils.DownloadManager
 import com.arkangel.ulessontechnicaltest.android.utils.DownloadManagerImpl
 import com.arkangel.ulessontechnicaltest.android.utils.PlayerUtil
@@ -39,6 +40,9 @@ class ULessonTechnicalTestApplication : Application() {
                     factory { GetChaptersUseCase() }
                     single { ResumeLearningUseCase() }
                     single { DailyLoginUseCase() }
+
+                    // Wrapper
+                    factory { DateUtilsWrapper() }
 
                     // View Models
                     viewModelOf(::HomeScreenViewModel)
