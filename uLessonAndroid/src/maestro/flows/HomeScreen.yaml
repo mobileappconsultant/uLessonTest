@@ -1,0 +1,32 @@
+appId: com.arkangel.ulessontechnicaltest.android
+---
+
+# Test Ads View
+- assertVisible:
+    id: "Ads"
+
+#Test Bottom Bar
+- runFlow: ./subFlows/BottomBar.yaml
+
+# Test Subjects
+- assertVisible:
+    id: "subjectIcon"
+- assertVisible:
+    id: "subjectTitle"
+
+#Test SearchView
+- assertVisible:
+    id: "searchBox"
+
+# Perform Search
+- tapOn:
+    id: "searchBox"
+
+- inputText: "Biology"
+
+- hideKeyboard
+
+- assertVisible:
+    text: "Biology"
+    enabled: true
+

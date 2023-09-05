@@ -1,0 +1,27 @@
+appId: com.arkangel.ulessontechnicaltest.android
+---
+
+#Test SearchView
+- assertVisible:
+    id: "searchBox"
+
+- tapOn:
+    id: "searchBox"
+
+- inputRandomText
+
+- eraseText: 50
+
+- hideKeyboard
+
+- assertVisible:
+    id: "subjectTitle"
+- assertVisible:
+    id: "subjectChaptersInfo"
+
+- assertVisible:
+    id: "chapterContainer"
+
+# View All lessons
+- tapOn:
+    id: "chapterContainer"

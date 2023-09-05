@@ -1,0 +1,25 @@
+appId: com.arkangel.ulessontechnicaltest.android
+---
+- runFlow: ./subFlows/Launch.yaml
+- runFlow: HomeScreen.yaml
+
+# Navigate to subject info screen
+- tapOn:
+    id: "subject"
+    index: 0
+
+- runFlow: SubjectInfoScreen.yaml
+
+# Watch Lesson
+- tapOn:
+    id: "lesson"
+    index: 0
+
+
+- waitForAnimationToEnd:
+      timeout: 3000
+
+- repeat:
+    times: 2
+    commands:
+        - back

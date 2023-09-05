@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="adb-R58M458XTVH-XnoDVl._adb-tls-connect._tcp." tests="1" failures="0" time="65">
+    <testcase id="main" name="main" classname="main" time="65"/>
+  </testsuite>
+</testsuites>
