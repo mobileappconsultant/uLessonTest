@@ -83,15 +83,11 @@ dependencies {
     implementation(libs.koin.core)
     ksp(libs.compose.destinations.ksp)
 
-
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
     testImplementation(libs.androidx.core.testing)
 }
-
-
-
 
 koverAndroid {
     common {
