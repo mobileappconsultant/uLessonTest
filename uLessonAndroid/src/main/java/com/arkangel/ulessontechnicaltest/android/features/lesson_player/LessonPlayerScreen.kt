@@ -77,7 +77,7 @@ data class LessonPlayerScreenNavArgs(
 @Composable
 fun LessonPlayerScreen(navigator: DestinationsNavigator) {
     val viewModel: LessonPlayerScreenViewModel = koinViewModel()
-    var loading by remember { viewModel.loading }
+    val loading by remember { viewModel.loading }
     var showBookmarkDialog by remember { viewModel.showBookmarkDialog }
     var temporarilyPaused by remember { viewModel.temporarilyPaused }
     var dialogText by remember { mutableStateOf("") }

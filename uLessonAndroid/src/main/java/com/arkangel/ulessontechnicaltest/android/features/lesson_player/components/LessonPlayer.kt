@@ -21,6 +21,7 @@ fun LessonPlayer(
                 setShowBuffering(PlayerView.SHOW_BUFFERING_ALWAYS)
                 setShowShuffleButton(false)
                 setShowVrButton(false)
+                setShowSubtitleButton(true)
             }
         },
         modifier = modifier
